@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'elasticapm.contrib.django',
 ]
 
 MIDDLEWARE = [
@@ -47,6 +48,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'elasticapm.contrib.django.middleware.TracingMiddleware',
+    'elasticapm.contrib.django.middleware.Catch404Middleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -79,6 +82,20 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+# Elastic
+ELASTIC_APM = {
+    'DEBUG': True,
+    'SERVICE_NAME': 'apm-test',
+
+    'SECRET_TOKEN': '',
+
+    'SERVER_URL': 'http://localhost:8200',
+
+    'ENVIRONMENT': 'production',
+}
+
 
 
 # Password validation
