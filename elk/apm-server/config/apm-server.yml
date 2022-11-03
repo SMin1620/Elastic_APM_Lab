@@ -1,0 +1,23 @@
+apm-server:
+  host: "localhost:8200"
+
+#  elasticsearch:
+#    username: elastic
+#    password: elasticpassword
+#
+#  kibana:
+#    enabled: true
+#    username: elastic
+#    password: elasticpassword
+
+
+output.elasticsearch:
+  enabled: true
+  protocol: "http"
+  hosts: [ "elasticsearch:9200" ]
+  ssl.enabled: false
+#  username: elastic
+#  password: elasticpassword
+
+logging:
+  to_files: false
