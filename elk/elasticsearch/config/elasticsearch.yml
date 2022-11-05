@@ -5,5 +5,5 @@ xpack.license.self_generated.type: basic
 #xpack.security.authc.token.enable: true
 #xpack.security.authc.api_key.enabled: true
 
-#xpack.security.enabled: true
-#xpack.monitoring.collection.enabled: true
+xpack.security.enabled: true
+xpack.monitoring.collection.enabled: true

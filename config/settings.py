@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 ELASTIC_APM = {
     'SERVICE_NAME': 'my-app',
 
-    'SECRET_TOKEN': 'changeme',
+    'SECRET_TOKEN': '',
 
     'SERVER_URL': 'http://localhost:8200',
 
@@ -53,6 +53,7 @@ ELASTIC_APM = {
 
 MIDDLEWARE = [
     'elasticapm.contrib.django.middleware.TracingMiddleware',
+    "elasticapm.contrib.django.middleware.Catch404Middleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
