@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import elasticapm
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-b$+2m40)sf12)g4x9@r^!y!kgbf$ks3fupjs!ip+zr@=+^)78#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,13 +45,15 @@ INSTALLED_APPS = [
 # Elastic
 ELASTIC_APM = {
     'SERVICE_NAME': 'my-app',
-
     'SECRET_TOKEN': '',
-
-    'SERVER_URL': 'http://localhost:8200',
-
+    'SERVER_URL': 'http://127.0.0.1:8200',
     'ENVIRONMENT': 'production',
+    'DEBUG': True
+    # 'LOG_LEVEL': 'trace',
+    # 'TRANSPORT_CLASS': elasticapm.instrumentation.control.instrument()
 }
+
+# elasticapm.instrumentation.control.instrument()
 
 MIDDLEWARE = [
     'elasticapm.contrib.django.middleware.TracingMiddleware',
